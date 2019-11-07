@@ -8,13 +8,9 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 1
-        //           labelView.layer.cornerRadius = 10
-        
         sceneView.delegate = self
         sceneView.showsStatistics = false
         
-        // 2
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
         }
@@ -39,15 +35,6 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - ARSCNViewDelegate
     
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
-
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         if let faceAnchor = anchor as? ARFaceAnchor, let faceGeometry = node.geometry as? ARSCNFaceGeometry {
             faceGeometry.update(from: faceAnchor.geometry)
@@ -56,40 +43,25 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
         let faceMesh = ARSCNFaceGeometry(device: sceneView.device!, fillMesh: true)
-        //        let node = SCNNode(geometry: faceMesh)
-       
-        
-//        let plane = SCNPlane(width: 2, height: 2)
-//        let bundleURL = Bundle.main.url(forResource: "engine", withExtension: "gif")
-        
-        
-        //        layer.add(animation, forKey: "contents")
-        let tempView = MySketch()
-        tempView.frame = CGRect(x: 0, y: 0, width: 1800, height: 1800)
-        tempView.width = 1800
-        tempView.height = 1800
-        tempView.setup()
-        tempView.layer.bounds = CGRect(x: 0, y: 0, width: 1800  , height: 1800)
+  
+        let sketch = MySketch()
+        sketch.frame = CGRect(x: 0, y: 0, width: 1920, height: 1920)
+        sketch.setup()
+        sketch.layer.bounds = CGRect(x: 0, y: 0, width: 1920  , height: 1920)
         
         
         
         let newMaterial = SCNMaterial()
         newMaterial.isDoubleSided = true
-        newMaterial.diffuse.contents = tempView.layer
+        newMaterial.diffuse.contents = sketch.layer
         let scaleVal = SCNMatrix4MakeScale(0.5, 0.5, 0.5)
         newMaterial.diffuse.contentsTransform = scaleVal
-        //        newMaterial.stre
-        
-        //        plane.materials = [newMaterial]
+
         let node = SCNNode(geometry: faceMesh)
        
         node.geometry?.materials = [newMaterial]
         node.geometry?.firstMaterial?.fillMode = .fill
-        //        node.geometry?.firstMaterial = imageMaterial
-        //        node.geometry?.firstMaterial = newMaterial
-        
-     
-        
+             
         return node
     }
     

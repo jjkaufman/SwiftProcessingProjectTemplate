@@ -10,8 +10,8 @@
         <!--App View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AppViewController" customModule="SwiftProcessingTesting" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="MySketch" customModule="SwiftProcessingTesting" customModuleProvider="target">
+                <viewController id="BYZ-38-t0r" customClass="AppViewController"  customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="MySketch" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -25,7 +25,7 @@
         <!--Face View Controller-->
         <scene sceneID="KX3-v3-6gF">
             <objects>
-                <viewController storyboardIdentifier="faceViewController" id="YSS-sk-fcj" customClass="FaceViewController" customModule="SwiftProcessingTesting" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="faceViewController" id="YSS-sk-fcj" customClass="FaceViewController" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Jd-of-jDj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

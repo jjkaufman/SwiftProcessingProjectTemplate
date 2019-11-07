@@ -36,14 +36,24 @@
 						</dict>
 						<key>Nodes</key>
 						<array>
+							<string>Base.lproj/Main.storyboard</string>
+							<string>Info.plist:UIMainStoryboardFile</string>
+							<string>Info.plist:UIApplicationSceneManifest:UISceneStoryboardFile</string>
 							<string>Info.plist:Privacy - Camera Usage Description</string>
+							<string>Info.plist:NSCameraUsageDescription</string>
 							<string>MySketch.swift</string>
 							<string>AppViewController.swift</string>
 							<string>FaceViewController.swift</string>
-							<string>Main.storyboard</string>
 						</array>
 						<key>Definitions</key>
 						<dict>
+							<key>Base.lproj/Main.storyboard</key>
+							<dict>
+								<key>Path</key>
+								<string>Main.storyboard</string>
+								<key>SortOrder</key>
+								<string>98</string>
+							</dict>
 							<key>FaceViewController.swift</key>
 							<dict>
 								<key>Path</key>
@@ -53,11 +63,6 @@
 							<dict>
 								<key>Path</key>
 								<string>AppViewController.swift</string>
-							</dict>
-							<key>Main.storyboard</key>
-							<dict>
-								<key>Path</key>
-								<string>Main.storyboard</string>
 							</dict>
 							<key>MySketch.swift</key>
 							<dict>
@@ -69,7 +74,9 @@
                             &lt;string&gt;Main&lt;/string&gt;
                         </string>
 							<key>Info.plist:Privacy - Camera Usage Description</key>
-							<string>&lt;key&gt;Privacy - Camera Usage Description&lt;/key&gt;&lt;string&gt;Test1123&lt;/string&gt;</string>
+							<string>&lt;key&gt;Privacy - Camera Usage Description&lt;/key&gt;&lt;string&gt;This app uses the camera to project a sketch onto your face.&lt;/string&gt;</string>
+							<key>Info.plist:NSCameraUsageDescription</key>
+							<string>&lt;key&gt;NSCameraUsageDescription&lt;/key&gt;&lt;string&gt;This app uses the camera to project a sketch onto your face.&lt;/string&gt;</string>
 						</dict>
 					</dict>
 				</array>
