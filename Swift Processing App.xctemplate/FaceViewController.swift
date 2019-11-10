@@ -1,15 +1,27 @@
 import UIKit
 import SceneKit
 import ARKit
+import SwiftProcessing
 
 class FaceViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
+    var sketch: Sketch?
+    var layer: CALayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        sketch = MySketch()
+        sketch!.frame = CGRect(x: 0, y: 0, width: 1920, height: 1920)
+        sketch!.delegate?.setup()
+        sketch!.layer.bounds = CGRect(x: 0, y: 0, width: 1920  , height: 1920)
+        
         sceneView.delegate = self
         sceneView.showsStatistics = false
+        
+        layer = sketch!.layer
+        self.view.addSubview(sketch!)
         
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
@@ -21,6 +33,7 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARFaceTrackingConfiguration()
+        configuration.isLightEstimationEnabled = true
         
         // Run the view's session
         sceneView.session.run(configuration)
@@ -42,26 +55,21 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
     }
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
-        let faceMesh = ARSCNFaceGeometry(device: sceneView.device!, fillMesh: true)
-  
-        let sketch = MySketch()
-        sketch.frame = CGRect(x: 0, y: 0, width: 1920, height: 1920)
-        sketch.setup()
-        sketch.layer.bounds = CGRect(x: 0, y: 0, width: 1920  , height: 1920)
-        
-        
+        let faceMesh = ARSCNFaceGeometry(device: sceneView.device!, fillMesh: true)        
         
         let newMaterial = SCNMaterial()
         newMaterial.isDoubleSided = true
-        newMaterial.diffuse.contents = sketch.layer
+        newMaterial.diffuse.contents = layer!
         let scaleVal = SCNMatrix4MakeScale(0.5, 0.5, 0.5)
         newMaterial.diffuse.contentsTransform = scaleVal
-
+        
         let node = SCNNode(geometry: faceMesh)
-       
+        
         node.geometry?.materials = [newMaterial]
         node.geometry?.firstMaterial?.fillMode = .fill
-             
+        
+        
+        
         return node
     }
     
