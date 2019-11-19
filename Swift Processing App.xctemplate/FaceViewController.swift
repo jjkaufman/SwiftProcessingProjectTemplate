@@ -55,7 +55,7 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
     }
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
-        let faceMesh = ARSCNFaceGeometry(device: sceneView.device!, fillMesh: true)        
+        let faceMesh = ARSCNFaceGeometry(device: sceneView.device!, fillMesh: sketch!.isFaceFill)
         
         let newMaterial = SCNMaterial()
         newMaterial.isDoubleSided = true
