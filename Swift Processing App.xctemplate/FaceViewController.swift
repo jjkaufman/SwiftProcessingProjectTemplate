@@ -14,7 +14,7 @@ class FaceViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         sketch = MySketch()
         sketch!.frame = CGRect(x: 0, y: 0, width: 1920, height: 1920)
-        sketch!.delegate?.setup()
+        sketch!.sketchDelegate?.setup()
         sketch!.layer.bounds = CGRect(x: 0, y: 0, width: 1920  , height: 1920)
         
         sceneView.delegate = self
